@@ -1,0 +1,9 @@
+import { body } from 'express-validator'
+
+export const validateCreateUser = [
+  body('nombre').notEmpty().withMessage('El nombre no debe estar vacio'),
+  body('edad')
+    .customSanitizer((value) => parseInt(value, 10))
+    .isInt({ min: 0 })
+    .withMessage('La edad tiene que ser un numero entero mayor a 0'),
+]
