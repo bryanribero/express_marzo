@@ -7,3 +7,8 @@ export const validateCreateUser = [
     .isInt({ min: 0 })
     .withMessage('La edad tiene que ser un numero entero mayor a 0'),
 ]
+
+export const validateCreateUserWhitEmail = [
+  body('nombre').notEmpty().withMessage('El nombre no debe estar vacio'),
+  body('email').isEmail().withMessage('El email ingresado es incorrecto'),
+]
