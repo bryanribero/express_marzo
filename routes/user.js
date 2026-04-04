@@ -1,9 +1,9 @@
 import { Router } from 'express'
+import { validateCreateUser } from '../validators/userValidator.js'
 import { createUserController } from '../controllers/userController.js'
-import { validateCreateUserWhitEmail } from '../validators/userValidator.js'
 
 const router = Router()
 
-router.post('/', validateCreateUserWhitEmail, createUserController)
+router.post('/', validateCreateUser, createUserController)
 
 export default router

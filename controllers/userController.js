@@ -1,4 +1,5 @@
 import { validationResult } from 'express-validator'
+import { createUser } from '../services/userService.js'
 
 export async function createUserController(req, res, next) {
   try {
@@ -11,11 +12,11 @@ export async function createUserController(req, res, next) {
       return next(error)
     }
 
-    const { nombre, email } = req.body
+    const { nombre, edad } = req.body
 
-    console.log(email)
+    const result = await createUser({ nombre, edad })
 
-    res.status(201).json({ mensaje: `Usuario creado - ${nombre} - ${email}` })
+    res.status(201).json({ mensaje: `Usuario creado`, details: result })
   } catch (err) {
     next(err)
   }
