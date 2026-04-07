@@ -9,3 +9,23 @@ export async function createUser(data) {
     throw new Error('Error al crear el usuario', { cause: err })
   }
 }
+
+export async function getAllUser() {
+  try {
+    const users = await Usuario.findAll()
+
+    return users
+  } catch (err) {
+    throw new Error('Error al encontrar usuarios', { cause: err })
+  }
+}
+
+export async function getAllUserById(condition) {
+  try {
+    const user = await Usuario.findAll({ where: { id_usuario: condition } })
+
+    return user
+  } catch (err) {
+    throw new Error('Error al encontrar el usuario por el id', { cause: err })
+  }
+}
