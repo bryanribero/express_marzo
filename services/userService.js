@@ -29,3 +29,17 @@ export async function getAllUserById(condition) {
     throw new Error('Error al encontrar el usuario por el id', { cause: err })
   }
 }
+
+export async function updateUserById(updateData, condition) {
+  try {
+    const user = await Usuario.update(updateData, {
+      where: { id_usuario: condition },
+    })
+
+    return user
+  } catch (err) {
+    throw new Error(`Error al actualizar el usuario con el id: ${condition}`, {
+      cause: err,
+    })
+  }
+}
