@@ -43,3 +43,39 @@ export async function updateUserById(updateData, condition) {
     })
   }
 }
+
+export async function updateUsers(updateData) {
+  try {
+    const users = await Usuario.update(updateData, { where: {} })
+
+    return users
+  } catch (err) {
+    throw new Error(`Error al actualizar los registros`, {
+      cause: err,
+    })
+  }
+}
+
+export async function deleteUsersById(condition) {
+  try {
+    const users = await Usuario.destroy({ where: { id_usuario: condition } })
+
+    return users
+  } catch (err) {
+    throw new Error(`Error al eliminar el registro`, {
+      cause: err,
+    })
+  }
+}
+
+export async function deleteUsers() {
+  try {
+    const users = await Usuario.destroy({ where: {} })
+
+    return users
+  } catch (err) {
+    throw new Error(`Error al eliminar el registro`, {
+      cause: err,
+    })
+  }
+}

@@ -18,8 +18,12 @@ export const validateUpdateUser = [
     .not()
     .exists()
     .withMessage('No se permite modificar el ID'),
-  body('nombre').notEmpty().withMessage('El nombre no debe estar vacio'),
+  body('nombre')
+    .optional()
+    .notEmpty()
+    .withMessage('El nombre no debe estar vacio'),
   body('edad')
+    .optional()
     .customSanitizer((value) => parseInt(value, 10))
     .isInt({ min: 1 })
     .withMessage('La edad tiene que ser un numero mayor que 0'),
