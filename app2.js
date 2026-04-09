@@ -2,6 +2,9 @@ import express from 'express'
 import globalError from './middlewares/errorHandler.js'
 import { notFound } from './middlewares/notFound.js'
 import usersRouter from './routes/user.js'
+import mongodb from './db/mongoDB.js'
+
+mongodb()
 
 const app = express()
 
