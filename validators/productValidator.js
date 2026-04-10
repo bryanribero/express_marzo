@@ -35,3 +35,35 @@ export const validateCreateProducts = [
     .isInt({ min: 0 })
     .withMessage('Cantidad invalida'),
 ]
+
+export const validateUpdateProducts = [
+  body('nombre')
+    .optional()
+    .notEmpty()
+    .withMessage('Nombre no debe estar vacio'),
+
+  body('precio')
+    .optional()
+    .notEmpty()
+    .withMessage('Campo precio es obligatorio')
+    .isFloat({ min: 0 })
+    .withMessage('Precio invalido'),
+
+  body('cantidad')
+    .optional()
+    .notEmpty()
+    .withMessage('Campo cantidad es obligatorio')
+    .isInt({ min: 0 })
+    .withMessage('Cantidad invalida'),
+
+  body().custom((value) => {
+    const allowedFields = ['nombre', 'precio', 'cantidad']
+    const fields = Object.keys(value)
+    const extraFields = fields.filter((field) => !allowedFields.includes(field))
+
+    if (extraFields.length > 0) {
+      throw new Error(`Campos no permitidos: ${extraFields.join(', ')}`)
+    }
+    return true
+  }),
+]

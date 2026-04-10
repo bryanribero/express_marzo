@@ -1,10 +1,18 @@
-export default function globalError(err, req, res, _next) {
-  const statusError = err.status || 500
+export default function globalErrorHandler(err, req, res, _next) {
+  if (err.type === 'NotModified') {
+    return res.status(err.status || 400).json({
+      message: err.message,
+    })
+  }
 
-  res.status(statusError).json({
-    error: {
-      message: err.message || 'Ocurrio un error interno',
-      details: err.errors || null,
-    },
+  if (err.type === 'DatabaseError') {
+    return res.status(500).json({
+      message: err.message,
+      details: err.cause,
+    })
+  }
+
+  res.status(500).json({
+    message: 'Error interno en el servidor',
   })
 }

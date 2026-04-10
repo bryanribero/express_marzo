@@ -51,3 +51,16 @@ export async function getProductsById(id) {
     throw error
   }
 }
+
+export async function updateProducts(set) {
+  try {
+    const product = await Producto.updateMany({}, { $set: set })
+
+    return product
+  } catch (err) {
+    const dbError = new Error('Error con la base de datos')
+    dbError.type = 'DatabaseError'
+    dbError.cause = err
+    throw dbError
+  }
+}

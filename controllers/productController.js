@@ -4,6 +4,7 @@ import {
   createProductos,
   getProducts,
   getProductsById,
+  updateProducts,
 } from '../services/productoService.js'
 
 export async function createProductController(req, res, next) {
@@ -74,6 +75,37 @@ export async function getProductByIdController(req, res, next) {
     }
 
     res.status(201).json({ result: product })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function updateProductsController(req, res, next) {
+  const body = req.body
+
+  const validationError = validationResult(req)
+
+  if (!validationError.isEmpty()) {
+    return res.status(400).json({
+      message: 'Error de validación',
+      errors: validationError.array(),
+    })
+  }
+
+  try {
+    const product = await updateProducts(body)
+
+    if (!product.modifiedCount) {
+      const error = new Error('No se encontraron productos a modificar')
+      error.status = 404
+      error.type = 'NotModified'
+      throw error
+    }
+
+    res.status(201).json({
+      message: `Documentos actualizados: ${product.modifiedCount}`,
+      result: product,
+    })
   } catch (err) {
     next(err)
   }
