@@ -38,3 +38,16 @@ export async function getProducts() {
     throw error
   }
 }
+
+export async function getProductsById(id) {
+  try {
+    const product = await Producto.findById(id)
+
+    return product
+  } catch (err) {
+    console.error(err)
+    const error = new Error('Error al obtener el Producto')
+    error.details = err.message
+    throw error
+  }
+}

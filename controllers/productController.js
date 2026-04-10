@@ -3,6 +3,7 @@ import {
   createProducto,
   createProductos,
   getProducts,
+  getProductsById,
 } from '../services/productoService.js'
 
 export async function createProductController(req, res, next) {
@@ -55,6 +56,24 @@ export async function getProductsController(req, res, next) {
     const product = await getProducts()
 
     res.status(200).json({ message: 'Productos conseguidos', result: product })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function getProductByIdController(req, res, next) {
+  const { id } = req.params
+
+  try {
+    const product = await getProductsById(id)
+
+    if (!product) {
+      const error = new Error('Producto no encontrado')
+      error.status = 404
+      return next(error)
+    }
+
+    res.status(201).json({ result: product })
   } catch (err) {
     next(err)
   }

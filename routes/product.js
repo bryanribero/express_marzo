@@ -6,6 +6,7 @@ import {
 import {
   createProductController,
   createProductsController,
+  getProductByIdController,
   getProductsController,
 } from '../controllers/productController.js'
 
@@ -16,5 +17,7 @@ router.post('/', validateCreateProduct, createProductController)
 router.post('/varios', validateCreateProducts, createProductsController)
 
 router.get('/', getProductsController)
+
+router.get('/:id', getProductByIdController)
 
 export default router
