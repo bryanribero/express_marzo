@@ -25,3 +25,16 @@ export async function createProductos(documentosArray) {
     throw error
   }
 }
+
+export async function getProducts() {
+  try {
+    const product = await Producto.find()
+
+    return product
+  } catch (err) {
+    console.error(err)
+    const error = new Error('Error al obtener los documentos')
+    error.details = err.message
+    throw error
+  }
+}

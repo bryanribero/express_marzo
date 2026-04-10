@@ -1,5 +1,9 @@
 import { validationResult } from 'express-validator'
-import { createProducto, createProductos } from '../services/productoService.js'
+import {
+  createProducto,
+  createProductos,
+  getProducts,
+} from '../services/productoService.js'
 
 export async function createProductController(req, res, next) {
   const document = req.body
@@ -41,6 +45,16 @@ export async function createProductsController(req, res, next) {
     const product = await createProductos(body)
 
     res.status(201).json({ message: 'Productos creados', result: product })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function getProductsController(req, res, next) {
+  try {
+    const product = await getProducts()
+
+    res.status(200).json({ message: 'Productos conseguidos', result: product })
   } catch (err) {
     next(err)
   }
