@@ -9,6 +9,7 @@ import {
   createProductsController,
   getProductByIdController,
   getProductsController,
+  updateProductByIdController,
   updateProductsController,
 } from '../controllers/productController.js'
 
@@ -23,5 +24,7 @@ router.get('/', getProductsController)
 router.get('/:id', getProductByIdController)
 
 router.patch('/', validateUpdateProducts, updateProductsController)
+
+router.patch('/:id', validateUpdateProducts, updateProductByIdController)
 
 export default router

@@ -64,3 +64,20 @@ export async function updateProducts(set) {
     throw dbError
   }
 }
+
+export async function updateProductById(id, set) {
+  try {
+    const product = await Producto.findByIdAndUpdate(
+      id,
+      { $set: set },
+      { returnDocument: 'after' }
+    )
+
+    return product
+  } catch (err) {
+    const dbError = new Error('Error con la base de datos')
+    dbError.type = 'DatabaseError'
+    dbError.cause = err
+    throw dbError
+  }
+}
