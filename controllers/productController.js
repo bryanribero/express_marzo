@@ -2,6 +2,8 @@ import { validationResult } from 'express-validator'
 import {
   createProducto,
   createProductos,
+  deleteProductById,
+  deleteProductsWithFilters,
   getProducts,
   getProductsById,
   updateProductById,
@@ -136,6 +138,53 @@ export async function updateProductByIdController(req, res, next) {
     }
 
     res.status(201).json({ message: 'Producto modificado', result: product })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function deleteProductByIdController(req, res, next) {
+  const { id } = req.params
+  try {
+    const product = await deleteProductById(id)
+
+    if (!product) {
+      const error = new Error(`No se encontro el producto con id: ${id}`)
+      error.status = 404
+      error.type = 'NotDelete'
+      throw error
+    }
+
+    res.status(200).json({ message: 'Producto eliminado', result: product })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function deleteProductsWithFiltersController(req, res, next) {
+  const filter = req.query
+
+  const validationError = validationResult(req)
+
+  if (!validationError.isEmpty()) {
+    return res.status(400).json({
+      message: 'Error de validación',
+      errors: validationError.array().map((e) => e.msg),
+    })
+  }
+  try {
+    const product = await deleteProductsWithFilters(filter)
+
+    if (!product) {
+      const error = new Error(
+        'No se encontro producto que coincida con el filtro'
+      )
+      error.status = 404
+      error.type = 'NotDelete'
+      throw error
+    }
+
+    res.status(200).json({ message: 'Producto eliminado', result: product })
   } catch (err) {
     next(err)
   }

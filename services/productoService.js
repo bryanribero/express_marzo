@@ -81,3 +81,29 @@ export async function updateProductById(id, set) {
     throw dbError
   }
 }
+
+export async function deleteProductById(id) {
+  try {
+    const product = await Producto.findByIdAndDelete(id)
+
+    return product
+  } catch (err) {
+    const dbError = new Error('Error con la base de datos')
+    dbError.type = 'DatabaseError'
+    dbError.cause = err
+    throw dbError
+  }
+}
+
+export async function deleteProductsWithFilters(filters) {
+  try {
+    const product = Producto.deleteMany(filters)
+
+    return product
+  } catch (err) {
+    const dbError = new Error('Error con la base de datos')
+    dbError.type = 'DatabaseError'
+    dbError.cause = err
+    throw dbError
+  }
+}

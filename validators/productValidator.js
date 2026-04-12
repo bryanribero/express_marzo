@@ -1,4 +1,4 @@
-import { body } from 'express-validator'
+import { body, query } from 'express-validator'
 
 export const validateCreateProduct = [
   body('nombre').notEmpty().withMessage('Nombre no debe estar vacio'),
@@ -63,6 +63,15 @@ export const validateUpdateProducts = [
 
     if (extraFields.length > 0) {
       throw new Error(`Campos no permitidos: ${extraFields.join(', ')}`)
+    }
+    return true
+  }),
+]
+
+export const validateQueryNotEmpty = [
+  query().custom((_value, { req }) => {
+    if (Object.keys(req.query).length === 0) {
+      throw new Error('No se permite eliminar sin filtros')
     }
     return true
   }),
