@@ -12,7 +12,7 @@ export default function globalErrorHandler(err, req, res, _next) {
     })
   }
 
-  res.status(500).json({
-    message: 'Error interno en el servidor',
+  res.status(err.status || 500).json({
+    message: err.message || 'Error interno del servidor',
   })
 }

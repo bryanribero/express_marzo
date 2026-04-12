@@ -76,3 +76,18 @@ export const validateQueryNotEmpty = [
     return true
   }),
 ]
+
+export const validateFiltersDelete = [
+  query('*').custom((_value, { req }) => {
+    const allowedFilters = ['nombre', 'precio', 'cantidad']
+    const keys = Object.keys(req.query)
+
+    for (const key of keys) {
+      if (!allowedFilters.includes(key)) {
+        throw new Error(`Filtro no permitido: ${key}`)
+      }
+    }
+
+    return true
+  }),
+]

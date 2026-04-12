@@ -2,6 +2,7 @@ import { Router } from 'express'
 import {
   validateCreateProduct,
   validateCreateProducts,
+  validateFiltersDelete,
   validateQueryNotEmpty,
   validateUpdateProducts,
 } from '../validators/productValidator.js'
@@ -33,6 +34,7 @@ router.patch('/:id', validateUpdateProducts, updateProductByIdController)
 router.delete(
   '/delete-filters',
   validateQueryNotEmpty,
+  validateFiltersDelete,
   deleteProductsWithFiltersController
 )
 

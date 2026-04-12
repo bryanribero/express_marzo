@@ -175,13 +175,13 @@ export async function deleteProductsWithFiltersController(req, res, next) {
   try {
     const product = await deleteProductsWithFilters(filter)
 
-    if (!product) {
+    if (product.deletedCount === 0) {
       const error = new Error(
         'No se encontro producto que coincida con el filtro'
       )
       error.status = 404
       error.type = 'NotDelete'
-      throw error
+      return next(error)
     }
 
     res.status(200).json({ message: 'Producto eliminado', result: product })
