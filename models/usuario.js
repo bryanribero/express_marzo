@@ -5,19 +5,33 @@ class Usuario extends Model {}
 
 Usuario.init(
   {
-    id_usuario: {
+    id_user: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    nombre: {
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
+      set(value) {
+        this.setDataValue('email', value.toLowercase())
+      },
+    },
+    password: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    edad: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: { min: 1 },
+    role: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      defaultValue: 'user',
+      validate: {
+        isIn: [['admin', 'user']],
+      },
     },
   },
   {
