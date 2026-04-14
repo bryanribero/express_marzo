@@ -25,7 +25,14 @@ export async function createUserController(req, res, next) {
 
     const result = await createUser({ email, password, role })
 
-    res.status(201).json({ mensaje: `Usuario creado`, details: result })
+    res.status(201).json({
+      mensaje: `Usuario creado`,
+      details: {
+        id_user: result.id_user,
+        email: result.email,
+        role: result.role,
+      },
+    })
   } catch (err) {
     next(err)
   }

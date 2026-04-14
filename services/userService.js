@@ -1,14 +1,27 @@
 import { UniqueConstraintError } from 'sequelize'
 import Usuario from '../models/usuario.js'
+import bcrypt from 'bcrypt'
 
 export async function createUser(data) {
   try {
-    const user = await Usuario.create(data)
+    const hash = await bcrypt.hash(data.password, 10)
+
+    const newData = { ...data, password: hash }
+
+    const user = await Usuario.create(newData)
 
     return user
   } catch (err) {
     if (err instanceof UniqueConstraintError) {
       throw new Error('El email ya esta en uso', { cause: err })
+    }
+    if (err instanceof TypeError) {
+      throw new Error(
+        'Mira, algo simple y claro podría ser algo como "Error al procesar la contraseña: se recibió un dato inválido',
+        {
+          cause: err,
+        }
+      )
     }
     const dbError = new Error('Error con la base de datos')
     dbError.type = 'DatabaseError'
