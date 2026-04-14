@@ -1,11 +1,16 @@
 import { body } from 'express-validator'
 
-export const validateCreateUser = [
-  body('nombre').notEmpty().withMessage('El nombre no debe estar vacio'),
-  body('edad')
-    .customSanitizer((value) => parseInt(value, 10))
-    .isInt({ min: 1 })
-    .withMessage('La edad tiene que ser un numero entero mayor a 0'),
+export const validateUser = [
+  body('email').isEmail().withMessage('Formato de email incorrecto'),
+
+  body('password')
+    .isLength({ min: 8, max: 16 })
+    .withMessage('La contraseña debe contener entre 8 y 16 caracteres'),
+
+  body('role')
+    .optional()
+    .isIn(['user', 'admin'])
+    .withMessage('El rol debe ser "user" o "admin"'),
 ]
 
 export const validateCreateUserWhitEmail = [

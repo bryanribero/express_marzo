@@ -1,3 +1,4 @@
+import { UniqueConstraintError } from 'sequelize'
 import Usuario from '../models/usuario.js'
 
 export async function createUser(data) {
@@ -6,7 +7,31 @@ export async function createUser(data) {
 
     return user
   } catch (err) {
-    throw new Error('Error al crear el usuario', { cause: err })
+    if (err instanceof UniqueConstraintError) {
+      throw new Error('El email ya esta en uso', { cause: err })
+    }
+    const dbError = new Error('Error con la base de datos')
+    dbError.type = 'DatabaseError'
+    dbError.cause = err
+    throw dbError
+  }
+}
+
+export async function getUserLogin(email, password) {
+  try {
+    const user = await Usuario.findOne({
+      where: {
+        email: email,
+        password: password,
+      },
+    })
+
+    return user
+  } catch (err) {
+    const dbError = new Error('Error con la base de datos')
+    dbError.type = 'DatabaseError'
+    dbError.cause = err
+    throw dbError
   }
 }
 

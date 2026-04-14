@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import {
-  validateCreateUser,
+  validateUser,
   validateUpdateUser,
 } from '../validators/userValidator.js'
 import {
@@ -9,13 +9,16 @@ import {
   deleteUsersController,
   getAllUsersByIdController,
   getAllUsersController,
+  getUserLoginController,
   updateUserByIdController,
   updateUsersController,
 } from '../controllers/userController.js'
 
 const router = Router()
 
-router.post('/', validateCreateUser, createUserController)
+router.post('/register', validateUser, createUserController)
+
+router.post('/login', validateUser, getUserLoginController)
 
 router.get('/', getAllUsersController)
 

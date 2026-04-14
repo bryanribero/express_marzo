@@ -5,26 +5,52 @@ import {
   deleteUsersById,
   getAllUser,
   getAllUserById,
+  getUserLogin,
   updateUserById,
   updateUsers,
 } from '../services/userService.js'
 
 export async function createUserController(req, res, next) {
+  const errorValidation = validationResult(req)
+
+  if (!errorValidation.isEmpty()) {
+    const error = new Error('Validacion fallida')
+    error.status = 400
+    error.errors = errorValidation.array().map((e) => e.msg)
+    return next(error)
+  }
+
   try {
-    const errorValidation = validationResult(req)
+    const { email, password, role } = req.body
 
-    if (!errorValidation.isEmpty()) {
-      const error = new Error('Validacion fallida')
-      error.status = 400
-      error.errors = errorValidation.array().map((e) => e.msg)
-      return next(error)
-    }
-
-    const { nombre, edad } = req.body
-
-    const result = await createUser({ nombre, edad })
+    const result = await createUser({ email, password, role })
 
     res.status(201).json({ mensaje: `Usuario creado`, details: result })
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function getUserLoginController(req, res, next) {
+  const { email, password } = req.body
+
+  const errorValidation = validationResult(req)
+
+  if (!errorValidation.isEmpty()) {
+    const error = new Error('Validacion fallida')
+    error.status = 400
+    error.errors = errorValidation.array().map((e) => e.msg)
+    return next(error)
+  }
+
+  try {
+    const user = await getUserLogin(email, password)
+
+    if (user) {
+      return res.status(200).json({ message: 'Login exitoso' })
+    } else {
+      return res.status(401).json({ message: 'Credenciales inválidas' })
+    }
   } catch (err) {
     next(err)
   }

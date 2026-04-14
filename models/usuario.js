@@ -18,7 +18,7 @@ Usuario.init(
         isEmail: true,
       },
       set(value) {
-        this.setDataValue('email', value.toLowercase())
+        this.setDataValue('email', value.toLowerCase())
       },
     },
     password: {

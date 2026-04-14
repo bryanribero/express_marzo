@@ -5,7 +5,7 @@ import usersRouter from './routes/user.js'
 import productsRouter from './routes/product.js'
 import { connectDB } from './db/mongoDB.js'
 
-connectDB()
+//connectDB()
 
 const app = express()
 
