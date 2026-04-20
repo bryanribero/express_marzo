@@ -85,7 +85,9 @@ export async function getAllUsersByIdController(req, res, next) {
       return next(error)
     }
 
-    res.status(200).json({ result: user })
+    res.status(200).json({
+      result: user,
+    })
   } catch (err) {
     next(err)
   }

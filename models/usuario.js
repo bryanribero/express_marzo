@@ -39,6 +39,16 @@ Usuario.init(
     modelName: 'Usuario',
     tableName: 'usuarios',
     timestamps: false,
+    defaultScope: {
+      attributes: {
+        exclude: ['password'],
+      },
+    },
+    scopes: {
+      whitPassword: {
+        attributes: { include: ['password'] },
+      },
+    },
   }
 )
 

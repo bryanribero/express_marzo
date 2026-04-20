@@ -4,25 +4,16 @@ import bcrypt from 'bcrypt'
 
 export async function createUser(data) {
   try {
-    const hash = await bcrypt.hash(data.password, 10)
+    const dataHashed = hashPassword(data)
 
-    const newData = { ...data, password: hash }
-
-    const user = await Usuario.create(newData)
+    const user = await Usuario.create(dataHashed)
 
     return user
   } catch (err) {
     if (err instanceof UniqueConstraintError) {
       throw new Error('El email ya esta en uso', { cause: err })
     }
-    if (err instanceof TypeError) {
-      throw new Error(
-        'Mira, algo simple y claro podría ser algo como "Error al procesar la contraseña: se recibió un dato inválido',
-        {
-          cause: err,
-        }
-      )
-    }
+
     const dbError = new Error('Error con la base de datos')
     dbError.type = 'DatabaseError'
     dbError.cause = err
@@ -30,9 +21,26 @@ export async function createUser(data) {
   }
 }
 
+async function hashPassword(data) {
+  try {
+    const hash = await bcrypt.hash(data.password, 10)
+
+    const newData = { ...data, password: hash }
+
+    return newData
+  } catch (err) {
+    throw new Error(
+      'Error al procesar la contraseña: se recibió un dato inválido',
+      {
+        cause: err,
+      }
+    )
+  }
+}
+
 export async function getUserLogin(email, password) {
   try {
-    const user = await Usuario.findOne({
+    const user = await Usuario.scope('whitPassword').findOne({
       where: {
         email: email,
         password: password,
@@ -60,7 +68,7 @@ export async function getAllUser() {
 
 export async function getAllUserById(condition) {
   try {
-    const user = await Usuario.findAll({ where: { id_usuario: condition } })
+    const user = await Usuario.findAll({ where: { id_user: condition } })
 
     return user
   } catch (err) {
