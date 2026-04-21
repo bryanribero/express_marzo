@@ -51,13 +51,9 @@ export async function getUserLoginController(req, res, next) {
   }
 
   try {
-    const user = await getUserLogin(email, password)
+    await getUserLogin(email, password)
 
-    if (user) {
-      return res.status(200).json({ message: 'Login exitoso' })
-    } else {
-      return res.status(401).json({ message: 'Credenciales inválidas' })
-    }
+    res.status(200).json({ message: 'Login exitoso' })
   } catch (err) {
     next(err)
   }

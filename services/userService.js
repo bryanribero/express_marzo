@@ -1,10 +1,11 @@
 import { UniqueConstraintError } from 'sequelize'
 import Usuario from '../models/usuario.js'
 import bcrypt from 'bcrypt'
+import AuthError from '../errors/authError.js'
 
 export async function createUser(data) {
   try {
-    const dataHashed = hashPassword(data)
+    const dataHashed = await hashPassword(data)
 
     const user = await Usuario.create(dataHashed)
 
@@ -39,21 +40,36 @@ async function hashPassword(data) {
 }
 
 export async function getUserLogin(email, password) {
+  let user
+
   try {
-    const user = await Usuario.scope('whitPassword').findOne({
+    user = await Usuario.scope('whitPassword').findOne({
       where: {
         email: email,
-        password: password,
       },
     })
-
-    return user
   } catch (err) {
     const dbError = new Error('Error con la base de datos')
     dbError.type = 'DatabaseError'
     dbError.cause = err
     throw dbError
   }
+
+  if (!user) {
+    const err = new AuthError('Usuario no encontrado')
+    err.errors = 'El email ingresado esta incorrecto o no existe'
+    throw err
+  }
+
+  const isValid = await bcrypt.compare(password, user.password)
+
+  if (!isValid) {
+    const err = new AuthError('Credenciales Inválidas')
+    err.errors = 'Contraseña incorrecta'
+    throw err
+  }
+
+  return user
 }
 
 export async function getAllUser() {
