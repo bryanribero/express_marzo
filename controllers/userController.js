@@ -51,9 +51,9 @@ export async function getUserLoginController(req, res, next) {
   }
 
   try {
-    await getUserLogin(email, password)
+    const token = await getUserLogin(email, password)
 
-    res.status(200).json({ message: 'Login exitoso' })
+    res.status(200).json({ message: 'Login exitoso', token: token })
   } catch (err) {
     next(err)
   }

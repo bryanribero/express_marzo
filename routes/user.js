@@ -13,12 +13,17 @@ import {
   updateUserByIdController,
   updateUsersController,
 } from '../controllers/userController.js'
+import { verifyToken } from '../middlewares/verifyToken.js'
 
 const router = Router()
 
 router.post('/register', validateUser, createUserController)
 
 router.post('/login', validateUser, getUserLoginController)
+
+router.get('/admin', verifyToken, (req, res) => {
+  res.json({ message: 'Bienvenido admin' })
+})
 
 router.get('/', getAllUsersController)
 

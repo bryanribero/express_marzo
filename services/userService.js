@@ -2,6 +2,10 @@ import { UniqueConstraintError } from 'sequelize'
 import Usuario from '../models/usuario.js'
 import bcrypt from 'bcrypt'
 import AuthError from '../errors/authError.js'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export async function createUser(data) {
   try {
@@ -69,7 +73,15 @@ export async function getUserLogin(email, password) {
     throw err
   }
 
-  return user
+  const payload = {
+    id: user.id_user,
+    email: user.email,
+    role: user.role,
+  }
+
+  const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
+
+  return token
 }
 
 export async function getAllUser() {
