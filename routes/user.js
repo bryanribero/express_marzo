@@ -14,6 +14,7 @@ import {
   updateUsersController,
 } from '../controllers/userController.js'
 import { verifyToken } from '../middlewares/verifyToken.js'
+import { checkRole } from '../middlewares/checkRole.js'
 
 const router = Router()
 
@@ -21,7 +22,7 @@ router.post('/register', validateUser, createUserController)
 
 router.post('/login', validateUser, getUserLoginController)
 
-router.get('/admin', verifyToken, (req, res) => {
+router.get('/admin', verifyToken, checkRole(['admin']), (req, res) => {
   res.json({ message: 'Bienvenido admin' })
 })
 

@@ -4,10 +4,13 @@ import { notFound } from './middlewares/notFound.js'
 import usersRouter from './routes/user.js'
 import productsRouter from './routes/product.js'
 import { connectDB } from './db/mongoDB.js'
+import cors from 'cors'
 
 //connectDB()
 
 const app = express()
+
+app.use(cors())
 
 app.use(express.json())
 
