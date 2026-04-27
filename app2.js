@@ -6,6 +6,7 @@ import productsRouter from './routes/product.js'
 import sanitizeRouter from './routes/sanitize.js'
 import { connectDB } from './db/mongoDB.js'
 import cors from 'cors'
+import helmet from 'helmet'
 
 //connectDB()
 
@@ -20,6 +21,8 @@ app.use(
 )
 
 app.use(express.json())
+
+app.use(helmet())
 
 app.use('/api/users', usersRouter)
 
