@@ -1,11 +1,12 @@
 import DOMpurify from 'dompurify'
-import { JSDOM } from 'jsdom'
-
-const windows = new JSDOM('').window
-const purify = DOMpurify(windows)
 
 export function sanitizeMiddleware(keysToSanitize = []) {
-  return (req, res, next) => {
+  return async (req, res, next) => {
+    const { JSDOM } = await import('jsdom')
+
+    const windows = new JSDOM('').window
+    const purify = DOMpurify(windows)
+
     for (let key of keysToSanitize) {
       if (typeof req.body[key] !== 'string') {
         return res.status(400).json({

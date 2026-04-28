@@ -7,6 +7,8 @@ import sanitizeRouter from './routes/sanitize.js'
 import { connectDB } from './db/mongoDB.js'
 import cors from 'cors'
 import helmet from 'helmet'
+import { limitGlobal } from './middlewares/rateLimit.js'
+import testRouter from './routes/testeo.js'
 
 //connectDB()
 
@@ -24,11 +26,15 @@ app.use(express.json())
 
 app.use(helmet())
 
+app.use(limitGlobal)
+
 app.use('/api/users', usersRouter)
 
 app.use('/api/products', productsRouter)
 
 app.use('/api/sanitize', sanitizeRouter)
+
+app.use('/api/test', testRouter)
 
 app.use(notFound)
 
