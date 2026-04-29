@@ -1,7 +1,9 @@
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
-dotenv.config()
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV || 'dev'}`,
+})
 
 const url = `mongodb://localhost:${process.env.MONGO_PORT}/${process.env.MONGO_DB}`
 
