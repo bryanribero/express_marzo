@@ -1,8 +1,10 @@
 const path = require('path')
 
+const env = process.env.NODE_ENV
+
 module.exports = {
   config: path.resolve('db', 'config', 'config.cjs'),
   'migrations-path': path.resolve('db', 'migrations'),
-  'seeders-path': path.resolve('db', 'seeders'),
+  'seeders-path': path.resolve('db', 'seeders', env),
   'models-path': path.resolve('models'),
 }

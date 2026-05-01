@@ -9,7 +9,10 @@
     "dev": "nodemon server.js",
     "migration-create": "sequelize-cli migration:generate --name",
     "migrate-dev": "cross-env NODE_ENV=dev sequelize-cli db:migrate --env development",
-    "undo-dev": "cross-env NODE_ENV=dev sequelize-cli db:migrate:undo --env development"
+    "migrate-undo-dev": "cross-env NODE_ENV=dev sequelize-cli db:migrate:undo --env development",
+    "seed-create-dev": "cross-env NODE_ENV=dev sequelize-cli seed:generate --name",
+    "seed-dev": "cross-env NODE_ENV=dev sequelize-cli db:seed:all --env development",
+    "seed-undo-dev": "cross-env NODE_ENV=dev sequelize-cli db:seed:undo --env development"
   },
   "keywords": [],
   "author": "",
