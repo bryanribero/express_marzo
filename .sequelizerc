@@ -1,6 +1,6 @@
 const path = require('path')
 
-const env = process.env.NODE_ENV
+const env = process.env.NODE_ENV || 'dev'
 
 module.exports = {
   config: path.resolve('db', 'config', 'config.cjs'),

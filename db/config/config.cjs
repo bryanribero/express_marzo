@@ -11,6 +11,9 @@ module.exports = {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     dialect: 'postgres',
+
+    seederStorage: 'sequelize',
+    seederStorageTableName: 'SequelizeData',
   },
   test: {
     username: process.env.DB_USER,
@@ -19,5 +22,8 @@ module.exports = {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     dialect: 'postgres',
+
+    seederStorage: 'sequelize',
+    seederStorageTableName: 'SequelizeData',
   },
 }
