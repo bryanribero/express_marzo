@@ -34,3 +34,5 @@ if (process.env.DB_URL) {
 }
 
 export default sequelize
+
+//comentario
