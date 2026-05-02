@@ -14,6 +14,8 @@ import testRouter from './routes/testeo.js'
 
 const app = express()
 
+app.set('trust proxy', 1)
+
 app.use(
   cors({
     origin: ['http://localhost:5173'],
