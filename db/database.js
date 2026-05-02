@@ -13,6 +13,7 @@ if (process.env.DB_URL) {
   ;((sequelize = new Sequelize(process.env.DB_URL)),
     {
       dialect: 'postgres',
+      logging: false,
     })
 } else {
   sequelize = new Sequelize(
