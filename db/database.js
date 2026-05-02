@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 dotenv.config({
-  path: `.env.${'dev'}`,
+  path: `.env.dev`,
 })
 
 const sequelize = new Sequelize(
