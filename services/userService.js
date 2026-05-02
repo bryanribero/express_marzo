@@ -5,9 +5,11 @@ import AuthError from '../errors/authError.js'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
-dotenv.config({
-  path: `.env.${process.env.NODE_ENV || 'dev'}`,
-})
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config({
+    path: `.env.${process.env.NODE_ENV || 'dev'}`,
+  })
+}
 
 export async function createUser(data) {
   try {
