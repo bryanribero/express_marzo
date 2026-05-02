@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
 dotenv.config({
-  path: `.env.dev`,
+  path: `.env.${process.env.NODE_ENV || 'dev'}`,
 })
 
 export async function createUser(data) {
