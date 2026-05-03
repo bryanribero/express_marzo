@@ -11,6 +11,8 @@
     - Express Validator
     - PostgreSQL
     - Sequelize
+    - Squelize-Cli
+    - JWT
     - Jest y Supertest
     - Swagger
     - Dompurify
@@ -20,9 +22,17 @@
 
 ## Requisitos previos
 
-Antes de instalar y ejecutar el proyecto, es necesario contar con.
+Antes de instalar y ejecutar el proyecto, es necesario contar con:
 
     - Node.js
     - Pnpm
     - PostgreSQL
     - Git
+
+## Instalacion
+
+    Una vez clonado el repositorio, instalar las dependencias del proyecto:
+
+```bash
+pnpm install
+```
