@@ -83,3 +83,27 @@ DB_URL="URL de la conexión con la base de datos de Neon"
 
 JWT_SECRET="clave secreta de jwt de produccion"
 ```
+
+## Ejecucion del proyecto
+
+    Para ejecutar el proyecto en modo dev:
+
+```bash
+pnpm dev
+```
+
+    Por defecto, el servidor se ejecuta en:
+
+```text
+http://localhost:3000
+```
+
+    El puerto puede configurarse mediante la variable de entorno 'PORT'
+
+    En produccion, el servidor es ejecutado automaticamente por Render utilizando la configuracion definida en el servidor.
+
+    Comando de inicio configurado en Render:
+
+```bash
+pnpm start
+```
