@@ -29,6 +29,7 @@ Antes de instalar y ejecutar el proyecto, es necesario contar con:
     - PostgreSQL
     - Git
 
+````md
 ## Instalacion
 
     Una vez clonado el repositorio, instalar las dependencias del proyecto:
@@ -36,3 +37,4 @@ Antes de instalar y ejecutar el proyecto, es necesario contar con:
 ```bash
 pnpm install
 ```
+````
