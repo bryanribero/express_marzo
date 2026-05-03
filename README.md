@@ -1,3 +1,5 @@
 # API de prueba
 
-## Esta API fue creado para poner a prueba y practicar con los stacks que manejo
+## Descripcion
+
+    Este proyecto fue creado para poner a prueba y practicar mi stack
