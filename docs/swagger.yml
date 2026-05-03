@@ -1,0 +1,40 @@
+openapi: 3.0.3
+
+info:
+  title: Api de prueba
+  version: 1.0.0
+  description: Documentación de los endpoints
+
+servers:
+  - url: http://localhost:3000
+    description: Desarrollo
+
+  - url: https://render-conection-express.onrender.com
+    description: Producción
+
+tags:
+  - name: User
+    description: Endpoint relacionado con Users
+
+  - name: Sanitize
+    description: Endpoint relacionado con la sanitización de datos
+
+paths:
+  /api/users:
+    get:
+      tags:
+        - User
+      summary: Obtener usuarios
+      description: Retornar una lista con todos los usuarios
+      responses:
+        '200':
+          description: Consulta realizada con exito. Puede retornar una lista vacia
+
+    put:
+      tags:
+        - User
+      summary: Actualizar usuarios
+      description: Actualizar todos los usuarios que cumplan la condición de busqueda
+      responses:
+        '204':
+          description: Usuario actualizado. No retorna nada

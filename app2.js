@@ -9,16 +9,25 @@ import cors from 'cors'
 import helmet from 'helmet'
 import { limitGlobal } from './middlewares/rateLimit.js'
 import testRouter from './routes/testeo.js'
+import fs from 'fs'
+import swaggerUi from 'swagger-ui-express'
+import YAML from 'yaml'
 
 //connectDB()
 
 const app = express()
 
+const swaggerFile = fs.readFileSync('./docs/swagger.yml', 'utf-8')
+const swaggerDocument = YAML.parse(swaggerFile)
+
 app.set('trust proxy', 1)
 
 app.use(
   cors({
-    origin: ['http://localhost:5173'],
+    origin: [
+      'http://localhost:5173',
+      'https://render-conection-express.onrender.com',
+    ],
     methods: ['GET', 'POST', 'PUT', 'PATCH'],
     allowedHeaders: ['Authorization', 'Content-type'],
   })
@@ -29,6 +38,8 @@ app.use(express.json())
 app.use(helmet())
 
 app.use(limitGlobal)
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use('/api/users', usersRouter)
 

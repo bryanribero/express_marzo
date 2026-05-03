@@ -138,7 +138,7 @@ export async function updateUsersController(req, res, next) {
       return next(error)
     }
 
-    res.status(200).json({ message: 'Registros actualizados' })
+    res.status(204).json({ message: 'Usuarios actualizados' })
   } catch (err) {
     next(err)
   }
