@@ -19,6 +19,8 @@
     - Helmet
     - Cors
     - Cross-env
+    - Render
+    - Neon
 
 ## Requisitos previos
 
@@ -50,4 +52,34 @@ DB_USER="Usuario de postgreSQL"
 DB_PASS="Contraseña"
 DB_HOST=localhost
 DB_PORT="Puerto en el que corre la base de datos, normalmente 5432"
+```
+
+## .env.dev
+
+    Archivo utilizado para indicar la base de datos de desarrollo y la clave secreta de JWT de desarrollo
+
+```env
+DB_NAME="base de datos para dev"
+
+JWT_SECRET="clave secreta de jwt de dev"
+```
+
+## .env.test
+
+    Archivo utilizado para indicar la base de datos de test y la clave secreta de JWT de desarrollo
+
+```env
+DB_NAME="base de datos para test"
+
+JWT_SECRET="clave secreta de jwt de test"
+```
+
+## .env.production
+
+    Archivo utilizado para indicar la URL de la base de datos de produccion y su clave secreta de JWT
+
+```env
+DB_URL="URL de la conexión con la base de datos de Neon"
+
+JWT_SECRET="clave secreta de jwt de produccion"
 ```
