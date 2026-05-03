@@ -9,7 +9,6 @@ import cors from 'cors'
 import helmet from 'helmet'
 import { limitGlobal } from './middlewares/rateLimit.js'
 import testRouter from './routes/testeo.js'
-import fs from 'fs'
 import swaggerUi from 'swagger-ui-express'
 import SwaggerParser from '@apidevtools/swagger-parser'
 
