@@ -11,14 +11,13 @@ import { limitGlobal } from './middlewares/rateLimit.js'
 import testRouter from './routes/testeo.js'
 import fs from 'fs'
 import swaggerUi from 'swagger-ui-express'
-import YAML from 'yaml'
+import SwaggerParser from '@apidevtools/swagger-parser'
 
 //connectDB()
 
 const app = express()
 
-const swaggerFile = fs.readFileSync('./docs/swagger.yml', 'utf-8')
-const swaggerDocument = YAML.parse(swaggerFile)
+const swaggerDocument = await SwaggerParser.bundle('./docs/swagger.yml')
 
 app.set('trust proxy', 1)
 

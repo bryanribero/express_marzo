@@ -23,7 +23,7 @@ router.post('/register', validateUser, createUserController)
 
 router.post('/login', validateUser, limitLogin, getUserLoginController)
 
-router.get('/admin', verifyToken, checkRole(['admin']), (req, res) => {
+router.get('/admin', verifyToken, checkRole(['admin', 'user']), (req, res) => {
   res.json({ message: 'Bienvenido admin' })
 })
 

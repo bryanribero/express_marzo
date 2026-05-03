@@ -20,7 +20,10 @@ export async function createUser(data) {
     return user
   } catch (err) {
     if (err instanceof UniqueConstraintError) {
-      throw new Error('El email ya esta en uso', { cause: err })
+      const err = new Error('El email ya esta en uso')
+      err.status = 409
+      err.errors = 'El email tiene que ser unico y no puede repetirse'
+      throw err
     }
 
     const dbError = new Error('Error con la base de datos')
