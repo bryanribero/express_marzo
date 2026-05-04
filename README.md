@@ -188,7 +188,7 @@ Swagger permite visualizar los endpoints disponibles, sus parámetros, cuerpos d
 
 | Entorno          | URL                                                       |
 | ---------------- | --------------------------------------------------------- |
-| Desarrollo local | `http://localhost:3000/api-docs`                          |
+| Desarrollo local | <http://localhost:3000/api-docs>                          |
 | Producción       | <https://render-conection-express.onrender.com/api-docs/> |
 
 Los archivos relacionados con la documentación se encuentran en:
