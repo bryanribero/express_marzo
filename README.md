@@ -4,8 +4,6 @@
 
 Este proyecto fue creado para poner a prueba y practicar mi stack
 
----
-
 ## Tecnologias utilizadas
 
     - Node.js
@@ -24,8 +22,6 @@ Este proyecto fue creado para poner a prueba y practicar mi stack
     - Render
     - Neon
 
----
-
 ## Requisitos previos
 
 Antes de instalar y ejecutar el proyecto, es necesario contar con:
@@ -35,8 +31,6 @@ Antes de instalar y ejecutar el proyecto, es necesario contar con:
     - PostgreSQL
     - Git
 
----
-
 ## Instalacion
 
 Una vez clonado el repositorio, instalar las dependencias del proyecto:
@@ -44,8 +38,6 @@ Una vez clonado el repositorio, instalar las dependencias del proyecto:
 ```bash
 pnpm install
 ```
-
----
 
 ## Variables de entorno
 
@@ -89,8 +81,6 @@ DB_URL="URL de conexion con la base de datos de Neon"
 JWT_SECRET="Clave secreta de JWT de produccion"
 ```
 
----
-
 ## Ejecucion del proyecto
 
 Para ejecutar el proyecto en modo dev:
@@ -115,8 +105,6 @@ Comando de inicio configurado en Render:
 pnpm start
 ```
 
----
-
 ## Script disponibles
 
 | Comando                 | Descripcion                                                                                |
@@ -127,8 +115,6 @@ pnpm start
 | `pnpm migration-create` | Creacion de una template de migracion(seguido de el va el nombre que tendra la migracion). |
 | `pnpm seed-create-dev`  | Creacion de una template de la seed(seguido de el va el nombre que tendra la seed).        |
 | `pnpm migrate-dev`      | Ejecuta las migraciones de la base de datos para desarrollo.                               |
-
----
 
 ## Base de datos
 
@@ -158,8 +144,6 @@ Para ejecutar los seeders:
 pnpm seed-{entorno}
 ```
 
----
-
 ## Tests
 
 El proyecto utiliza Jest y Supertest para realizar tests automatizados sobre la API.
@@ -175,8 +159,6 @@ Para ejecutar los tests:
 ```bash
 pnpm test
 ```
-
----
 
 ## Documentacion API
 
