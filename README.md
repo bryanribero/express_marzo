@@ -41,47 +41,44 @@ pnpm install
 
 ## Variables de entorno
 
-    El proyecto utiliza diferentes archivos de variables de entorno segun el ambiente de ejecucion.
+El proyecto utiliza diferentes archivos de variables de entorno según el ambiente de ejecución.
 
-## .env
+### `.env`
 
-    Archivo utilizado para setear conexiones basicas de la base de datos en local.
+Archivo utilizado para configurar los datos base de conexión a PostgreSQL en local.
 
 ```env
-DB_USER="Usuario de postgreSQL"
-DB_PASS="Contraseña"
+DB_USER="Usuario de PostgreSQL"
+DB_PASS="Contraseña de PostgreSQL"
 DB_HOST=localhost
 DB_PORT="Puerto en el que corre la base de datos, normalmente 5432"
 ```
 
-## .env.dev
+### `.env.dev`
 
-    Archivo utilizado para indicar la base de datos de desarrollo y la clave secreta de JWT de desarrollo
+Archivo utilizado para indicar la base de datos de desarrollo y la clave secreta de JWT de desarrollo.
 
 ```env
-DB_NAME="base de datos para dev"
-
-JWT_SECRET="clave secreta de jwt de dev"
+DB_NAME="Base de datos de desarrollo"
+JWT_SECRET="Clave secreta de JWT de desarrollo"
 ```
 
-## .env.test
+### `.env.test`
 
-    Archivo utilizado para indicar la base de datos de test y la clave secreta de JWT de desarrollo
+Archivo utilizado para indicar la base de datos de testing y la clave secreta de JWT de testing.
 
 ```env
-DB_NAME="base de datos para test"
-
-JWT_SECRET="clave secreta de jwt de test"
+DB_NAME="Base de datos de testing"
+JWT_SECRET="Clave secreta de JWT de testing"
 ```
 
-## .env.production
+### `.env.production`
 
-    Archivo utilizado para indicar la URL de la base de datos de produccion y su clave secreta de JWT
+Archivo utilizado para indicar la URL de conexión a la base de datos de producción y la clave secreta de JWT de producción.
 
 ```env
-DB_URL="URL de la conexión con la base de datos de Neon"
-
-JWT_SECRET="clave secreta de jwt de produccion"
+DB_URL="URL de conexion con la base de datos de Neon"
+JWT_SECRET="Clave secreta de JWT de produccion"
 ```
 
 ## Ejecucion del proyecto
