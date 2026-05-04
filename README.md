@@ -114,8 +114,32 @@ pnpm start
 | Comando                 | Descripcion                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------------ |
 | `pnpm dev`              | Levanta el servidor en modo desarrollo.                                                    |
-| `pnpm start`            | Inicia el servidor. Este comando es utilizado por Render en producción.                    |
+| `pnpm start`            | Inicia el servidor (este comando es utilizado por Render en producción).                   |
 | `pnpm test`             | Ejecuta los tests automatizados.                                                           |
 | `pnpm migration-create` | Creacion de una template de migracion(seguido de el va el nombre que tendra la migracion). |
 | `pnpm seed-create-dev`  | Creacion de una template de la seed(seguido de el va el nombre que tendra la seed).        |
 | `pnpm migrate-dev`      | Ejecuta las migraciones de la base de datos para desarrollo.                               |
+
+## Base de datos
+
+El proyecto utiliza PostgreSQL como base de datos junto con Sequelize como ORM.
+
+En los entornos de desarrollo y testing se puede utilizar una instancia local de PostgreSQL.
+
+Antes de ejecutar las migraciones, es necesario tener creada la base de datos correspondiente al entorno que se quiere utilizar.
+
+En producción, la base de datos se encuentra alojada en Neon.
+
+La conexión a la base de datos se configura mediante variables de entorno.
+
+Para ejecutar las migraciones:
+
+```bash
+pnpm run migrate-{entorno}
+```
+
+Para ejecutar los seeders:
+
+```bash
+pnpm run seed-{entorno}
+```
