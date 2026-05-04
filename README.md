@@ -186,10 +186,10 @@ La documentación interactiva de la API está disponible mediante Swagger UI.
 
 Swagger permite visualizar los endpoints disponibles, sus parámetros, cuerpos de request y posibles respuestas.
 
-| Entorno          | URL                                                       |
-| ---------------- | --------------------------------------------------------- |
-| Desarrollo local | `http://localhost:3000/api-docs`                          |
-| Producción       | `https://render-conection-express.onrender.com/api-docs/` |
+| Entorno          | URL                                                         |
+| ---------------- | ----------------------------------------------------------- |
+| Desarrollo local | `http://localhost:3000/api-docs`                            |
+| Producción       | <`https://render-conection-express.onrender.com/api-docs/`> |
 
 Los archivos relacionados con la documentación se encuentran en:
 
