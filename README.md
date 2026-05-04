@@ -51,6 +51,8 @@ pnpm install
 
 El proyecto utiliza diferentes archivos de variables de entorno según el ambiente de ejecución.
 
+<br>
+
 ### `.env`
 
 Archivo utilizado para configurar los datos base de conexión a PostgreSQL en local.

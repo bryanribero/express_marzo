@@ -6,11 +6,11 @@ info:
   description: Documentación de los endpoints
 
 servers:
-  - url: http://localhost:3000
-    description: Desarrollo
-
   - url: https://render-conection-express.onrender.com
     description: Producción
+
+  - url: http://localhost:3000
+    description: Desarrollo
 
 tags:
   - name: User
