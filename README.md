@@ -5,7 +5,6 @@
 Este proyecto fue creado para poner a prueba y practicar mi stack
 
 <br>
-<br>
 
 ## Tecnologias utilizadas
 
@@ -26,7 +25,6 @@ Este proyecto fue creado para poner a prueba y practicar mi stack
 - Neon
 
 <br>
-<br>
 
 ## Requisitos previos
 
@@ -38,7 +36,6 @@ Antes de instalar y ejecutar el proyecto, es necesario contar con:
 - Git
 
 <br>
-<br>
 
 ## Instalacion
 
@@ -48,7 +45,6 @@ Una vez clonado el repositorio, instalar las dependencias del proyecto:
 pnpm install
 ```
 
-<br>
 <br>
 
 ## Variables de entorno
@@ -94,7 +90,6 @@ JWT_SECRET="Clave secreta de JWT de produccion"
 ```
 
 <br>
-<br>
 
 ## Ejecucion del proyecto
 
@@ -121,7 +116,6 @@ pnpm start
 ```
 
 <br>
-<br>
 
 ## Script disponibles
 
@@ -134,7 +128,6 @@ pnpm start
 | `pnpm seed-create-dev`  | Creacion de una template de la seed(seguido de el va el nombre que tendra la seed).        |
 | `pnpm migrate-dev`      | Ejecuta las migraciones de la base de datos para desarrollo.                               |
 
-<br>
 <br>
 
 ## Base de datos
@@ -166,7 +159,6 @@ pnpm seed-{entorno}
 ```
 
 <br>
-<br>
 
 ## Tests
 
@@ -184,7 +176,6 @@ Para ejecutar los tests:
 pnpm test
 ```
 
-<br>
 <br>
 
 ## Documentacion API
