@@ -6,30 +6,30 @@ Este proyecto fue creado para poner a prueba y practicar mi stack
 
 ## Tecnologias utilizadas
 
-    - Node.js
-    - Express
-    - Express Validator
-    - PostgreSQL
-    - Sequelize
-    - Squelize-Cli
-    - JWT
-    - Jest y Supertest
-    - Swagger
-    - Dompurify
-    - Helmet
-    - Cors
-    - Cross-env
-    - Render
-    - Neon
+- Node.js
+- Express
+- Express Validator
+- PostgreSQL
+- Sequelize
+- Squelize-Cli
+- JWT
+- Jest y Supertest
+- Swagger
+- Dompurify
+- Helmet
+- Cors
+- Cross-env
+- Render
+- Neon
 
 ## Requisitos previos
 
 Antes de instalar y ejecutar el proyecto, es necesario contar con:
 
-    - Node.js
-    - Pnpm
-    - PostgreSQL
-    - Git
+- Node.js
+- Pnpm
+- PostgreSQL
+- Git
 
 ## Instalacion
 
