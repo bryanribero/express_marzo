@@ -98,12 +98,24 @@ pnpm dev
 http://localhost:3000
 ```
 
-    El puerto puede configurarse mediante la variable de entorno 'PORT'
+    El puerto puede configurarse mediante la variable de entorno 'PORT'.
 
     En produccion, el servidor es ejecutado automaticamente por Render utilizando la configuracion definida en el servidor.
+
 
     Comando de inicio configurado en Render:
 
 ```bash
 pnpm start
 ```
+
+## Script disponibles
+
+| Comando                 | Descripcion                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------ |
+| `pnpm dev`              | Levanta el servidor en modo desarrollo.                                                    |
+| `pnpm start`            | Inicia el servidor. Este comando es utilizado por Render en producción.                    |
+| `pnpm test`             | Ejecuta los tests automatizados.                                                           |
+| `pnpm migration-create` | Creacion de una template de migracion(seguido de el va el nombre que tendra la migracion). |
+| `pnpm seed-create-dev`  | Creacion de una template de la seed(seguido de el va el nombre que tendra la seed).        |
+| `pnpm migrate-dev`      | Ejecuta las migraciones de la base de datos para desarrollo.                               |
