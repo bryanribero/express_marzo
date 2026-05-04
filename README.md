@@ -4,7 +4,7 @@
 
 ## Descripcion
 
-    Este proyecto fue creado para poner a prueba y practicar mi stack
+Este proyecto fue creado para poner a prueba y practicar mi stack
 
 ---
 
@@ -41,7 +41,7 @@ Antes de instalar y ejecutar el proyecto, es necesario contar con:
 
 ## Instalacion
 
-    Una vez clonado el repositorio, instalar las dependencias del proyecto:
+Una vez clonado el repositorio, instalar las dependencias del proyecto:
 
 ```bash
 pnpm install
@@ -95,24 +95,23 @@ JWT_SECRET="Clave secreta de JWT de produccion"
 
 ## Ejecucion del proyecto
 
-    Para ejecutar el proyecto en modo dev:
+Para ejecutar el proyecto en modo dev:
 
 ```bash
 pnpm dev
 ```
 
-    Por defecto, el servidor se ejecuta en:
+Por defecto, el servidor se ejecuta en:
 
 ```text
 http://localhost:3000
 ```
 
-    El puerto puede configurarse mediante la variable de entorno 'PORT'.
+El puerto puede configurarse mediante la variable de entorno 'PORT'.
 
-    En produccion, el servidor es ejecutado automaticamente por Render utilizando la configuracion definida en el servidor.
+En produccion, el servidor es ejecutado automaticamente por Render utilizando la configuracion definida en el servidor.
 
-
-    Comando de inicio configurado en Render:
+Comando de inicio configurado en Render:
 
 ```bash
 pnpm start
